@@ -6,20 +6,20 @@ import { ProductDetailGuard } from './product-detail.guard';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [
-        RouterModule.forChild([
-            { path: 'products', component: ProductListComponent },
-            {
-                path: 'products/:id',
-                canActivate: [ProductDetailGuard],
-                component: ProductDetailComponent
-            },
-        ]),
-        SharedModule
-    ],
-    declarations: [
-        ProductListComponent,
-        ProductDetailComponent,
-    ]
+  imports: [
+    RouterModule.forChild([
+      { path: 'products', component: ProductListComponent },
+      {
+        path: 'products/:id',
+        canActivate: [ProductDetailGuard],
+        component: ProductDetailComponent
+      },
+    ]),
+    SharedModule
+  ],
+  declarations: [
+    ProductListComponent,
+    ProductDetailComponent,
+  ]
 })
 export class ProductModule { }
