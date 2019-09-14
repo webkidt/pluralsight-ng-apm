@@ -10,7 +10,8 @@ import { ProductData } from './product-data';
 
 import { ProductListComponent } from './product-list.component';
 import { ProductDetailComponent } from './product-detail.component';
-import { ProductDetailGuard } from './product-detail.guard';
+import { ProductEditComponent } from './product-edit.component';
+import { ProductEditGuard } from './product-edit.guard';
 
 @NgModule({
   imports: [
@@ -19,16 +20,18 @@ import { ProductDetailGuard } from './product-detail.guard';
     InMemoryWebApiModule.forRoot(ProductData),
     RouterModule.forChild([
       { path: 'products', component: ProductListComponent },
+      { path: 'products/:id', component: ProductDetailComponent },
       {
-        path: 'products/:id',
-        canActivate: [ProductDetailGuard],
-        component: ProductDetailComponent
-      },
+        path: 'products/:id/edit',
+        canDeactivate: [ProductEditGuard],
+        component: ProductEditComponent
+      }
     ])
   ],
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
+    ProductEditComponent,
   ]
 })
 export class ProductModule { }
